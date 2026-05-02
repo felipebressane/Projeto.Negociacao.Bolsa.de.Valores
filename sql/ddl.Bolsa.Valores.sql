@@ -17,11 +17,17 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `BolValdb` DEFAULT CHARACTER SET utf8 ;
 USE `BolValdb` ;
 
+
+DROP TABLE IF EXISTS `BolValdb`.`tb_empresa` ;
+DROP TABLE IF EXISTS `BolValdb`.`tb_acao` ;
+DROP TABLE IF EXISTS `BolValdb`.`tb_cotacao` ;
+DROP TABLE IF EXISTS `BolValdb`.`tb_investidor` ;
+DROP TABLE IF EXISTS `BolValdb`.`tb_negocia` ;
+
+
 -- -----------------------------------------------------
 -- Table `BolValdb`.`tb_empresa`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `BolValdb`.`tb_empresa` ;
-
 CREATE TABLE IF NOT EXISTS `BolValdb`.`tb_empresa` (
   `num_cnpj` VARCHAR(14) NOT NULL,
   `nome_empresa` VARCHAR(60) NOT NULL,
@@ -30,12 +36,9 @@ CREATE TABLE IF NOT EXISTS `BolValdb`.`tb_empresa` (
   PRIMARY KEY (`num_cnpj`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `BolValdb`.`tb_acao`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `BolValdb`.`tb_acao` ;
-
 CREATE TABLE IF NOT EXISTS `BolValdb`.`tb_acao` (
   `ticker` VARCHAR(10) NOT NULL,
   `tb_empresa_num_cnpj` VARCHAR(14) NOT NULL,
@@ -49,12 +52,9 @@ CREATE TABLE IF NOT EXISTS `BolValdb`.`tb_acao` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `BolValdb`.`tb_cotacao`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `BolValdb`.`tb_cotacao` ;
-
 CREATE TABLE IF NOT EXISTS `BolValdb`.`tb_cotacao` (
   `id_cotacao` INT NOT NULL AUTO_INCREMENT,
   `tb_acao_ticker` VARCHAR(10) NOT NULL,
@@ -69,12 +69,9 @@ CREATE TABLE IF NOT EXISTS `BolValdb`.`tb_cotacao` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `BolValdb`.`tb_investidor`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `BolValdb`.`tb_investidor` ;
-
 CREATE TABLE IF NOT EXISTS `BolValdb`.`tb_investidor` (
   `cod_documento` VARCHAR(14) NOT NULL,
   `nome_completo` VARCHAR(60) NOT NULL,
@@ -84,12 +81,9 @@ CREATE TABLE IF NOT EXISTS `BolValdb`.`tb_investidor` (
   PRIMARY KEY (`cod_documento`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `BolValdb`.`tb_negocia`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `BolValdb`.`tb_negocia` ;
-
 CREATE TABLE IF NOT EXISTS `BolValdb`.`tb_negocia` (
   `id_negocia` INT NOT NULL AUTO_INCREMENT,
   `tb_investidor_cod_documento` VARCHAR(14) NOT NULL,
@@ -112,7 +106,6 @@ CREATE TABLE IF NOT EXISTS `BolValdb`.`tb_negocia` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
