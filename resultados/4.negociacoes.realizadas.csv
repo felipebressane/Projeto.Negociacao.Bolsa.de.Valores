@@ -1,0 +1,5 @@
+nome_completo,tb_acao_ticker,tipo_operacao,quantidade_acoes,valor_unitario_acao,data_hora_transacao
+"João Silva",TSOL3,C,100,25,"2026-04-01 10:05:00"
+"João Silva",TSOL3,V,40,25.5,"2026-04-01 12:10:00"
+"Maria Souza",BFOR3,C,200,18.5,"2026-04-01 10:15:00"
+"InvestCorp Ltda",ENBR3,C,150,31.8,"2026-04-01 10:20:00"
